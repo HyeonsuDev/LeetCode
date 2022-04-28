@@ -5,21 +5,13 @@ class Solution(object):
         :rtype: int
         """
         sstr = ""
-        max = 0
+        r = 0
         for c in s:
             if c not in sstr:
                 sstr += c
             else:
                 sstr = sstr.split(c)[1] + c
 
-            if len(sstr) > max:
-                max = len(sstr)
+            r = max(len(sstr), r)
 
-        return max
-
-def main():
-    s = Solution()
-    print(s.lengthOfLongestSubstring("pwwkew"))
-
-if __name__ == "__main__":
-    main()
+        return r
