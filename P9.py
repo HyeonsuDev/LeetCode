@@ -7,20 +7,12 @@ class Solution(object):
         :type x: int
         :rtype: bool
         """
-        
-        s = str(x)
-        if s[0] == '-':
+        if x < 0 or (x % 10 == 0 and x != 0):
             return False
         
-        n = len(s)
+        y = 0
+        while x > y:
+            y = y * 10 + x % 10
+            x /= 10
 
-        left, right = 0, n - 1
-
-        while left < n and right >= 0 and left < right and s[left] == s[right]:
-            left += 1
-            right -= 1
-
-        if left == right or left > right:
-            return True
-        else:
-            return False
+        return x == y or x == y / 10
